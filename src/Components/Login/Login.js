@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     return (
@@ -20,6 +21,7 @@ const Login = () => {
                     className='bg-yellow-400 hover:bg-yellow-500 cursor-pointer mt-4 w-full rounded h-8'
                     type="submit" value="Login" />
             </form>
+            <p className='my-4'> Are you new <span className='text-yellow-600'>Fitness Pro</span> ? <Link to='/register'>Create a New Account</Link></p>
         </div>
     );
 };
