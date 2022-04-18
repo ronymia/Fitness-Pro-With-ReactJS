@@ -2,9 +2,11 @@ import React from 'react';
 import './Footer.css';
 
 const Footer = () => {
+    const today = new Date()
+    const date = today.getFullYear()
     return (
-        <footer className='h-12 bg-slate-900 mt-4 text-cyan-300 text-center'>
-            <h1>copy right @ 2022</h1>
+        <footer className='h-12 bg-slate-900 mt-4 text-yellow-500 text-center pt-4'>
+            <h1>copy right @ {date}</h1>
         </footer>
     );
 };
