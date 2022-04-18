@@ -4,6 +4,7 @@ import Header from './Components/Shared/Header/Header';
 import Footer from './Components/Shared/Footer/Footer';
 import Home from './Components/Home/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
+import Login from './Components/Login/Login';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
+        <Route path='/login' element={<Login />}></Route>
         <Route path='/*' element={<NotFound />}></Route>
       </Routes>
       <Footer />
