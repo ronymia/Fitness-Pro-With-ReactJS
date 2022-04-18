@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "tittle": "Bickini & Body",
+        "img": "https://i.ibb.co/rmw2jLc/service1.jpg",
+        "description": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus",
+        "price": "$100"
+    },
+    {
+        "id": 2,
+        "tittle": "Weight Loss",
+        "img": "https://i.ibb.co/rmRwGSf/service2.jpg",
+        "description": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus",
+        "price": "$110"
+    },
+    {
+        "id": 3,
+        "tittle": "Fit & Healthy",
+        "img": "https://i.ibb.co/Wn6QFcc/service3.jpg",
+        "description": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus",
+        "price": "$150"
+    },
+    {
+        "id": 4,
+        "tittle": "Muscle Building",
+        "img": "https://i.ibb.co/C5HJBPY/service4.jpg",
+        "description": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus",
+        "price": "$130"
+    }
+]

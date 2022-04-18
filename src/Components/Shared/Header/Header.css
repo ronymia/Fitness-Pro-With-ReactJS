@@ -1,0 +1,13 @@
+header img {
+    height: 50px;
+}
+
+header nav a {
+    margin-right: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+header nav a:hover {
+    color: gray;
+}
