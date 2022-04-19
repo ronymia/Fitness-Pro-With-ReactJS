@@ -22,15 +22,25 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
 
-    const handleLogin = event => {
+    const handleLogin = async (event) => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password);
     }
 
     if (user) {
         navigate(from, { replace: true });
+    }
+
+    if (loading) {
+        return (
+            <div>
+                <p>
+                    Loading..
+                </p>
+            </div>
+        )
     }
 
     return (
