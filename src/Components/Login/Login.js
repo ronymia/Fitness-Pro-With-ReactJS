@@ -36,14 +36,21 @@ const Login = () => {
 
     if (loading) {
         return (
-            <div>
-                <p>
-                    Loading..
-                </p>
-            </div>
+
+            <p>
+                Loading..
+            </p>
+
         )
     }
 
+    if (error) {
+        return (
+
+            <p>Error: {error.message}</p>
+
+        );
+    }
 
     return (
         <div className=' form-container'>
@@ -62,7 +69,7 @@ const Login = () => {
                     className='block border-2 rounded p-2 w-full ml-1'
                     type="password" name="email" id="" placeholder='Your password' required />
 
-
+                {error}
 
                 <input
                     className='bg-yellow-400 hover:bg-yellow-500 cursor-pointer mt-4 w-full rounded h-8'
