@@ -1,32 +1,81 @@
 import React from 'react';
 import './Register.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
+import { useState } from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import { async } from '@firebase/util';
+
 
 const Register = () => {
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const navigate = useNavigate();
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+
     const emailRef = useRef('');
     const passwordRef = useRef('');
-    const confirmPasswordRef = useRef('');
+    const nameRef = useRef('');
 
-    const formSubmit = event => {
+    const handleRegister = async event => {
         event.preventDefault();
+        const name = nameRef.current.value;
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const confirmPassword = confirmPasswordRef.current.value;
 
-        if (password !== confirmPassword) {
-            return 'dont match password'
-        }
+        await createUserWithEmailAndPassword(email, password);
 
-        console.log(email, password, confirmPassword);
+
+        // console.log(email, password, confirmPassword);
+    }
+
+    if (error) {
+        return (
+            <div>
+                <p>
+                    Error : {error.message}
+                </p>
+            </div>
+        )
+    }
+
+    if (loading) {
+        return (
+            <div>
+                <p>
+                    Loading...
+                </p>
+            </div>
+        )
+    }
+
+    if (user) {
+        navigate('/home');
+        console.log(user);
     }
 
     return (
         <div className=' form-container'>
             <h1 className='text-center my-4 text-4xl font-semibold'>Register</h1>
-            <form onSubmit={formSubmit}
+            <form onSubmit={handleRegister}
                 className='mx-auto'>
+
+                <label htmlFor="name">Name</label>
+                <input
+                    ref={nameRef}
+                    className='block border-2 rounded p-2 w-full ml-1'
+                    type="text" name="name" id="" placeholder='Your Name' required />
+
                 <label htmlFor="email">Email</label>
                 <input
                     ref={emailRef}
@@ -37,12 +86,6 @@ const Register = () => {
                 <input
                     ref={passwordRef}
                     className='block border-2 rounded p-2 w-full ml-1 mb-2'
-                    type="password" name="email" id="" placeholder='Your password' required />
-
-                <label htmlFor="password">Confirm Password</label>
-                <input
-                    ref={confirmPasswordRef}
-                    className='block border-2 rounded p-2 w-full ml-1'
                     type="password" name="email" id="" placeholder='Your password' required />
 
                 <input
