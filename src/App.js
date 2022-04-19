@@ -6,6 +6,8 @@ import Home from './Components/Home/Home/Home';
 import NotFound from './Components/NotFound/NotFound';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import RequireAuth from './Components/RequireAuth/RequireAuth';
+import CheckOutBook from './Components/CheckOutBook/CheckOutBook';
 
 function App() {
   return (
@@ -14,6 +16,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
+        <Route path='/service/:serviceId' element={
+          <RequireAuth>
+            <CheckOutBook />
+          </RequireAuth>
+        }
+        ></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/*' element={<NotFound />}></Route>
