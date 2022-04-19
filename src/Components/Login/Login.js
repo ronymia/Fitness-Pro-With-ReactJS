@@ -1,13 +1,19 @@
 import React from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
+
+    //Require Auth
+    // const [user] = useAuthState(auth);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
     const [
         signInWithEmailAndPassword,
@@ -23,6 +29,9 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
 
+    if (user) {
+        navigate(from, { replace: true });
+    }
 
     return (
         <div className=' form-container'>
@@ -45,7 +54,7 @@ const Login = () => {
                     className='bg-yellow-400 hover:bg-yellow-500 cursor-pointer mt-4 w-full rounded h-8'
                     type="submit" value="Login" />
             </form>
-            <p className='my-4'> Are you new <span className='text-yellow-600'>Fitness Pro</span> ? <Link to='/register'>Create a New Account</Link></p>
+            <p className='my-4'> Are you new <span className='text-yellow-600'>Fitness Pro</span> ? <Link className='text-yellow-600' to='/register'>Create a New Account</Link></p>
         </div>
     );
 };
