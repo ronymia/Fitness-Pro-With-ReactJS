@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { async } from '@firebase/util';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 
 const Register = () => {
@@ -93,6 +94,8 @@ const Register = () => {
                     type="submit" value="Register" />
             </form>
             <p className='my-4'> Already Have an Account ? <Link className='text-yellow-600' to='/login'>Login here</Link></p>
+
+            <SocialLogin />
         </div>
     );
 };

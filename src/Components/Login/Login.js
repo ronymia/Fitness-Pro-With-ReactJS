@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -65,6 +66,9 @@ const Login = () => {
                     type="submit" value="Login" />
             </form>
             <p className='my-4'> Are you new <span className='text-yellow-600'>Fitness Pro</span> ? <Link className='text-yellow-600' to='/register'>Create a New Account</Link></p>
+
+            <SocialLogin></SocialLogin>
+
         </div>
     );
 };
